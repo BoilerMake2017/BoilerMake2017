@@ -17,6 +17,8 @@ def split_file(file_name):
             else:
                 last_line_2 = open('cad_2.csv', 'a')
                 last_line_2.write(row_str + "\n")
+            # if row_num >= 10:
+            #     break
 
 
 split_file("cad.csv")
