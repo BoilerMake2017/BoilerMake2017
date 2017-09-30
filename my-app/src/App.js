@@ -1,21 +1,51 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+//import React, { Component } from 'react';
+//import { BrowserRouter, Route, Switch } from 'react-router';
+//import Router, { Route } from 'react-browser-router';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
+// import { Link } from 'react-router-dom';
+import './App.css';
+import Data from './components/Data';
+import Header from './components/Header';
+import Home from './components/Home';
+
+var React = require('react');
+//var Data = require('./components/Data');
+var ReactRouter = require('react-router-dom');
+var Router = ReactRouter.BrowserRouter;
+var Route = ReactRouter.Route;
+
+
+class App extends React.Component {
+    constructor() {
+        super();
+        this.state = {
+            data: []
+        };
+    }
+
+    componentWillMount() {
+        this.setState({
+            data: [{
+                title: 'Conclusion',
+                image: 'graph',
+                description: 'results'
+            }]
+        });
+    }
+    render() {
+        return (
+            <div>
+                <Header />
+                <Router >
+                    <div className="container" >
+                        <Route path='/' component={Home} />
+                        <Route path="/data" component={Data} />
+
+                    </div >
+                </Router>
+            </div>
+        );
+    }
 }
 
 export default App;
